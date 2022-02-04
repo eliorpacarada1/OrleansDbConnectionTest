@@ -1,3 +1,4 @@
+using Orleans;
 using Orleans.Configuration;
 using Orleans.Hosting;
 
@@ -27,6 +28,15 @@ builder.Host.UseOrleans(options =>
         gatewayPort: 30000,
         listenOnAnyHostAddress: true
     );
+    options.UseDashboard(options =>
+    {
+        options.Username = "USERNAME";
+        options.Password = "PASSWORD";
+        options.Host = "*";
+        options.Port = 8080;
+        options.HostSelf = true;
+        options.CounterUpdateIntervalMs = 1000;
+    });
 });
 
 builder.Services.AddControllers();
