@@ -1,6 +1,8 @@
 using Orleans;
 using Orleans.Configuration;
 using Orleans.Hosting;
+using SiloHost.Grains;
+using SiloHost.Intefaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +29,10 @@ builder.Host.UseOrleans(options =>
         siloPort: 11111,
         gatewayPort: 30000,
         listenOnAnyHostAddress: true
+    );
+    options.ConfigureApplicationParts
+    (
+        parts => parts.AddApplicationPart(typeof(BetGrain).Assembly).WithReferences()
     );
     options.UseDashboard(options =>
     {
