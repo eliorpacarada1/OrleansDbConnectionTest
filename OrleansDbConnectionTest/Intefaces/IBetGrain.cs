@@ -5,8 +5,8 @@ namespace SiloHost.Intefaces
 {
     public interface IBetGrain : IGrainWithStringKey
     {
-        Task<bool> UpdateGrain(decimal amount);
+        Task UpdateGrain(string amount);
 
-        Task<decimal> ReadBetAsync();
+        Task<string> ReadBetAsync();
     }
 }

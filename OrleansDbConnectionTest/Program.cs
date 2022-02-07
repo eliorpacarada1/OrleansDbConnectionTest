@@ -23,6 +23,7 @@ builder.Host.UseOrleans(options =>
     {
         x.Invariant = "Npgsql";
         x.ConnectionString = builder.Configuration.GetConnectionString("DbConnectionString");
+        x.UseJsonFormat = true;
     });
     options.ConfigureEndpoints
     (
@@ -34,6 +35,7 @@ builder.Host.UseOrleans(options =>
     (
         parts => parts.AddApplicationPart(typeof(BetGrain).Assembly).WithReferences()
     );
+    options.AddLogStorageBasedLogConsistencyProvider("testLogStorage");
     options.UseDashboard(options =>
     {
         options.Username = "USERNAME";

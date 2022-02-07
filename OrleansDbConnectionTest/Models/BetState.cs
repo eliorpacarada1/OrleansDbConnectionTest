@@ -3,8 +3,11 @@
     [Serializable]
     public class BetState
     {
-        public decimal Amount { get; set; }
-        
+        public string Amount { get; set; }
 
+        public BetState()
+        {
+
+        }
     }
 }

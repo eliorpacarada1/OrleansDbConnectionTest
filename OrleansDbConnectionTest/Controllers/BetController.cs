@@ -15,11 +15,11 @@ namespace SiloHost.Controllers
             _factory = factory;
         }
         [HttpPost("{key}")]
-        public async Task<ActionResult> UpdateBetAmountAsync([FromBody] decimal amount, string key)
+        public async Task<ActionResult> UpdateBetAmountAsync([FromBody] string amount, string key)
         {
            var result = _factory.GetGrain<IBetGrain>(key);
-           var resultIVerted = await result.UpdateGrain(amount);
-           return Ok(resultIVerted);
+           await result.UpdateGrain(amount);
+           return Ok("bravo!");
         }
         [HttpGet("{key}")]
         public async Task<ActionResult> ReadBetLatestState(string key)
