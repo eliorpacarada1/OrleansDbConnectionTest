@@ -22,11 +22,19 @@ namespace SiloHost.Controllers
            return Ok("bravo!");
         }
         [HttpGet("{key}")]
-        public async Task<ActionResult> ReadBetLatestState(string key)
+        public async Task<ActionResult> GetAllEventsFromAGrain(string key)
         {
             var result = _factory.GetGrain<IBetGrain>(key);
             var resultIVerted = await result.ReadBetAsync();
             return Ok(resultIVerted);
         }
+        //[HttpGet("/getBet/{key}")]
+        //public async Task<ActionResult> GetBetFromStream(string key)
+        //{
+        //   var result = _factory.GetGrain<IBetGrain>(key);
+        //   var graini = await result.GetSingleGrain(key);
+        //   return Ok(graini);
+        //}
+
     }
 }

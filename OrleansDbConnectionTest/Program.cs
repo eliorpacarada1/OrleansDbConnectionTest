@@ -31,6 +31,8 @@ builder.Host.UseOrleans(options =>
         gatewayPort: 30000,
         listenOnAnyHostAddress: true
     );
+    options.AddSimpleMessageStreamProvider("betProvider")
+           .AddMemoryGrainStorage("betStorage");
     options.ConfigureApplicationParts
     (
         parts => parts.AddApplicationPart(typeof(BetGrain).Assembly).WithReferences()

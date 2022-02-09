@@ -7,6 +7,8 @@ namespace SiloHost.Intefaces
     {
         Task UpdateGrain(string amount);
 
-        Task<string> ReadBetAsync();
+        Task<IReadOnlyList<BetEvent>> ReadBetAsync();
+
+        Task<BetEvent> GetSingleGrain(string GrainKey);
     }
 }
